@@ -1,0 +1,49 @@
+name: Niimbu
+options:
+  bundleIdPrefix: com.jonpaulkelly.niimbu
+  deploymentTarget:
+    macOS: "14.0"
+    iOS: "17.0"
+  createIntermediateGroups: true
+packages:
+  NiimbotKit:
+    path: NiimbotKit
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    GENERATE_INFOPLIST_FILE: YES
+    INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription: Niimbu uses Bluetooth to connect to your NIIMBOT label printer.
+    INFOPLIST_KEY_CFBundleDisplayName: Niimbu
+    DEVELOPMENT_TEAM: UFWV49P4TN
+    CODE_SIGN_STYLE: Automatic
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+targets:
+  Niimbu-macOS:
+    type: application
+    platform: macOS
+    sources: [Niimbu]
+    dependencies:
+      - package: NiimbotKit
+    settings:
+      base:
+        PRODUCT_NAME: Niimbu
+        PRODUCT_BUNDLE_IDENTIFIER: com.jonpaulkelly.niimbu
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.productivity
+        CODE_SIGN_ENTITLEMENTS: Niimbu/Resources/Niimbu.entitlements
+        ENABLE_HARDENED_RUNTIME: YES
+  Niimbu-iOS:
+    type: application
+    platform: iOS
+    sources: [Niimbu]
+    dependencies:
+      - package: NiimbotKit
+    settings:
+      base:
+        PRODUCT_NAME: Niimbu
+        PRODUCT_BUNDLE_IDENTIFIER: com.jonpaulkelly.niimbu
+        TARGETED_DEVICE_FAMILY: "1,2"
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
